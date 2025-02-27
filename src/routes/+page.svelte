@@ -29,31 +29,54 @@
 	let howUKnow: string = $state('');
 	let agreed: boolean = $state(false);
 
-	let disabled = $derived(isLoading || !name || !phone || !email || !department || !agreed);
+	let disabled = $derived(
+		isLoading ||
+			!name ||
+			!phone ||
+			!email ||
+			!agreed ||
+			(membership === 'General Member' && (!department || !session || !paymentMethod)) ||
+			(membership === 'Special Member' && (!eduLevel || !institute))
+	);
 
 	function addEntry() {
 		if (disabled) return;
+
+		if (membership === 'General Member') {
+			if (paymentMethod === 'Bkash' && (!bkashNumber || !bkashTrxID)) {
+				return;
+			}
+			if (paymentMethod === 'Rocket' && (!rocketNumber || !rocketTrxID)) {
+				return;
+			}
+		}
+
 		isLoading = true;
 		const data: Entry = {
-			name: name || 'None',
-			email: email || 'None',
-			phone: phone || 'None',
-			blood: blood || 'None',
-			hometown: hometown || 'None',
-			membership: membership || 'None',
-			hobbies: hobbies || 'None',
-			whyUInterested: whyUInterested || 'None',
-			department: department || 'None',
-			session: session || 'None',
-			paymentMethod: paymentMethod || 'None',
-			bkashNumber: bkashNumber || 'None',
-			bkashTrxID: bkashTrxID || 'None',
-			rocketNumber: rocketNumber || 'None',
-			rocketTrxID: rocketTrxID || 'None',
-			eduLevel: eduLevel || 'None',
-			institute: institute || 'None',
-			howUKnow: howUKnow || 'None'
+			name: name || 'N/A',
+			email: email || 'N/A',
+			phone: phone || 'N/A',
+			blood: blood || 'N/A',
+			hometown: hometown || 'N/A',
+			membership: membership || 'N/A',
+			hobbies: hobbies || 'N/A',
+			whyUInterested: whyUInterested || 'N/A',
+			department: department || 'N/A',
+			session: session || 'N/A',
+			paymentMethod: paymentMethod || 'N/A',
+			bkashNumber: bkashNumber || 'N/A',
+			bkashTrxID: bkashTrxID || 'N/A',
+			rocketNumber: rocketNumber || 'N/A',
+			rocketTrxID: rocketTrxID || 'N/A',
+			eduLevel: eduLevel || 'N/A',
+			institute: institute || 'N/A',
+			howUKnow: howUKnow || 'N/A'
 		};
+
+		data.institute =
+			membership === 'General Member'
+				? 'Shahjalal University of Science and Technology'
+				: institute;
 
 		fetch('/api/add', {
 			method: 'POST',
@@ -135,7 +158,12 @@
 				selections={['School', 'College', 'Undergraduate']}
 				required={true}
 			/>
-			<Textcard bind:text={institute} title={'Institute Name'} desc="Enter your Institute" />
+			<Textcard
+				bind:text={institute}
+				title={'Institute Name'}
+				desc="Enter your Institute"
+				required={true}
+			/>
 		{/if}
 		<Textcard bind:text={hobbies} title={'Hobbies'} desc="Enter your Hobbies" />
 		<Textcard

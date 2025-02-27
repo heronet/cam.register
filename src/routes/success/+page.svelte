@@ -10,9 +10,7 @@
 </script>
 
 <section class="p-4">
-	<Card.Root
-		class="mx-auto max-w-xl border-transparent bg-blue-950 bg-opacity-60 text-primary-foreground"
-	>
+	<Card.Root class="mx-auto max-w-xl border-transparent bg-blue-950/60 text-primary-foreground">
 		<Card.Header>
 			<Card.Title>
 				<img src={logo} alt="cam" />

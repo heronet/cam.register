@@ -41,8 +41,29 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	const { spreadsheetId, entry }: { entry: Entry; spreadsheetId: string } = await request.json();
 
-	const headerRange = 'Sheet1!A1:E1';
-	const headerValues = [['Full Name', 'Email', 'Phone', 'Department', 'Registration']];
+	const headerRange = 'Sheet1!A1:R1';
+	const headerValues = [
+		[
+			'Full Name',
+			'Email',
+			'Phone',
+			'Blood',
+			'Hometown',
+			'Membership Type',
+			'Hobbies',
+			'Why Interested',
+			'Department',
+			'Session',
+			'Payment Method',
+			'Bkash Number',
+			'Bkash TrxID',
+			'Rocket Number',
+			'Rocket TrxID',
+			'Edu Level',
+			'Institute',
+			'How You Know'
+		]
+	];
 
 	const headerResource = {
 		values: headerValues
@@ -60,11 +81,34 @@ export const POST: RequestHandler = async ({ request }) => {
 		// Define the range for the data rows
 		const range = 'Sheet1!A2'; // Adjust the range as needed
 
-		const values = [[entry.name, entry.email, entry.phone, entry.department, entry.registration]];
+		const values = [
+			[
+				entry.name || 'N/A',
+				entry.email || 'N/A',
+				entry.phone || 'N/A',
+				entry.blood || 'N/A',
+				entry.hometown || 'N/A',
+				entry.membership || 'N/A',
+				entry.hobbies || 'N/A',
+				entry.whyUInterested || 'N/A',
+				entry.department || 'N/A',
+				entry.session || 'N/A',
+				entry.paymentMethod || 'N/A',
+				entry.bkashNumber || 'N/A',
+				entry.bkashTrxID || 'N/A',
+				entry.rocketNumber || 'N/A',
+				entry.rocketTrxID || 'N/A',
+				entry.eduLevel || 'N/A',
+				entry.institute || 'N/A',
+				entry.howUKnow || 'N/A'
+			]
+		];
 
 		const resource = {
 			values
 		};
+		console.log(resource);
+
 		const response = await sheets.spreadsheets.values.append({
 			spreadsheetId,
 			range,
