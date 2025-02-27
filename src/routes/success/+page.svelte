@@ -9,6 +9,13 @@
 	import Social from '$lib/components/social.svelte';
 </script>
 
+<svelte:head>
+	<title>Success | CAM-SUST</title>
+	<meta
+		property="og:image"
+		content="https://cam-sust.org/wp-content/uploads/2020/05/512px-Black.png"
+	/>
+</svelte:head>
 <section class="p-4">
 	<Card.Root class="mx-auto max-w-xl border-transparent bg-blue-950/60 text-primary-foreground">
 		<Card.Header>

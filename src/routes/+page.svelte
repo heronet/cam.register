@@ -123,6 +123,13 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Member Registration | CAM-SUST</title>
+	<meta
+		property="og:image"
+		content="https://cam-sust.org/wp-content/uploads/2020/05/512px-Black.png"
+	/>
+</svelte:head>
 <div class="relative flex h-dvh w-full p-4">
 	<div class="mx-auto flex w-full max-w-xl flex-col gap-4">
 		<Introcard />
