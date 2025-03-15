@@ -130,7 +130,9 @@
 		content="https://cam-sust.org/wp-content/uploads/2020/05/512px-Black.png"
 	/>
 </svelte:head>
-<div class="relative flex h-dvh w-full p-4">
+<div
+	class="relative flex h-dvh w-full overflow-y-auto bg-[url(lib/assets/background.png)] bg-cover bg-center bg-no-repeat p-4"
+>
 	<div class="mx-auto flex w-full max-w-xl flex-col gap-4">
 		<Introcard />
 		<Textcard bind:text={name} title={'Name'} desc="Enter your Fullname" required={true} />

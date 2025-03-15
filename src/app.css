@@ -73,13 +73,3 @@
 		@apply bg-background text-foreground;
 	}
 }
-
-html,
-body {
-	height: 100dvh;
-	background: url('lib/assets/background.png');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	overflow-y: auto;
-}
