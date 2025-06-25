@@ -13,9 +13,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 			username: 'Sirat'
 		}
 	};
-	event.locals.user = dummyUser;
+	// event.locals.user = dummyUser;
 
-	if (!user) {
+	if (!event.locals.user) {
 		let protectedRoute = event.url.pathname.startsWith('/admin');
 
 		if (protectedRoute) {
