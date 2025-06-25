@@ -16,8 +16,12 @@
 		content="https://cam-sust.org/wp-content/uploads/2020/05/512px-Black.png"
 	/>
 </svelte:head>
-<section class="p-4">
-	<Card.Root class="mx-auto max-w-xl border-transparent bg-blue-950/60 text-primary-foreground">
+<section
+	class="relative flex h-dvh w-full overflow-y-auto bg-[url(lib/assets/background.png)] bg-cover bg-center bg-no-repeat p-4"
+>
+	<Card.Root
+		class="mx-auto h-fit max-w-xl border-transparent bg-blue-950/60 text-primary-foreground"
+	>
 		<Card.Header>
 			<Card.Title>
 				<img src={logo} alt="cam" />
@@ -26,9 +30,9 @@
 			<Card.Description class="text-center text-primary-foreground">
 				Also, you can keep an eye on our social media channels for the next update
 
-				<div class="my-4 mt-6 flex flex-wrap justify-center gap-6 max-sm:gap-2">
+				<p class="my-4 mt-6 flex flex-wrap justify-center gap-6 max-sm:gap-2">
 					<Social url={'https://www.facebook.com/camsust'} logo={facebook} title="Facebook" />
-				</div>
+				</p>
 			</Card.Description>
 		</Card.Header>
 		<Card.Content class="text-center text-primary-foreground"
